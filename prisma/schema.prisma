@@ -1,0 +1,21 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model KBEntry {
+  id          String   @id @default(uuid())
+  title       String   @unique
+  resolution  String
+  environment String
+  issue       String
+  products    String   // Store as a single string for multiple products
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
