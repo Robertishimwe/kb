@@ -35,4 +35,4 @@ COPY . .
 EXPOSE 3009
 
 # Run the application.
-CMD npm run dev
+CMD npm start
