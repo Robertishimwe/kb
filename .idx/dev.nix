@@ -14,6 +14,8 @@
     pkgs.oha
     pkgs.haskellPackages.snap-templates
     pkgs.openssl.dev
+    pkgs.docker-client
+    pkgs.docker
     pkgs.sudo
   ];
 
