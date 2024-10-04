@@ -25,9 +25,19 @@ export async function storeInPinecone(embeddings: number[][], docId: string) {
 export async function searchPinecone(queryEmbedding: number[], topK: number = 5) {
   const index = pinecone.Index(CONFIG.PINECONE_INDEX_NAME);
 
-  return await index.query({
+  const results = await index.query({
     vector: queryEmbedding,
     topK,
     includeMetadata: true,
   });
+
+  // console.log(results.matches || [])
+  console.log(results.matches || [])
+  return results;
+
+  // return await index.query({
+  //   vector: queryEmbedding,
+  //   topK,
+  //   includeMetadata: true,
+  // });
 }

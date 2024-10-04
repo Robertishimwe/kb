@@ -12,9 +12,7 @@
     pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
     pkgs.oha
-    pkgs.haskellPackages.snap-templates
     pkgs.openssl.dev
-    pkgs.sudo
   ];
 
   # Sets environment variables in the workspace

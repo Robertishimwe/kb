@@ -49,7 +49,20 @@ export async function searchKB(req: Request, res: Response) {
     );
 
     // res.json(kbEntries.filter(entry => entry !== null));
-    res.json(kbEntries);
+    // res.json(kbEntries);
+
+
+
+    const uniqueEntries = Array.from(
+      new Map(
+        kbEntries
+          .flat()
+          .filter(entry => entry !== null)
+          .map(entry => [entry.title, entry]) // Using title as the unique identifier
+      ).values()
+    );
+    
+    res.json(uniqueEntries);
   } catch (error) {
     res.status(500).json({ error: 'Failed to search KB', traces: error });
   }
