@@ -2,7 +2,7 @@
 
 import { Request, Response } from 'express';
 import { KBEntry } from '../models/kbEntry';
-import { splitText } from '../utils/textProcessing';
+import splitText from '../utils/textProcessing';
 import { generateEmbeddings } from '../services/embeddingService';
 import { storeInPinecone, searchPinecone } from '../services/pineconeService';
 import { storeInSQL, getKBEntryByTitle } from '../services/prismaService';
@@ -27,6 +27,7 @@ export async function addKBEntry(req: Request, res: Response) {
 
     res.status(201).json(storedEntry);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to add KB entry', traces: error });
   }
 }
