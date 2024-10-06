@@ -7,12 +7,6 @@ import cors from "cors";
 
 const app = express();
 
-// Apply CORS middleware before any other middleware
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-}));
-
 app.use(express.json());
 app.use(cors({
   origin: '*'
