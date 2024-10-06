@@ -1,9 +1,12 @@
 "use strict";
 // src/controllers/kbController.ts
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addKBEntry = addKBEntry;
 exports.searchKB = searchKB;
-const textProcessing_1 = require("../utils/textProcessing");
+const textProcessing_1 = __importDefault(require("../utils/textProcessing"));
 const embeddingService_1 = require("../services/embeddingService");
 const pineconeService_1 = require("../services/pineconeService");
 const prismaService_1 = require("../services/prismaService");
@@ -17,13 +20,14 @@ async function addKBEntry(req, res) {
       Products: ${entry.products}
       Resolution: ${entry.resolution}
     `;
-        const chunks = (0, textProcessing_1.splitText)(fullText);
+        const chunks = (0, textProcessing_1.default)(fullText);
         const embeddings = await (0, embeddingService_1.generateEmbeddings)(chunks);
         await (0, pineconeService_1.storeInPinecone)(embeddings, entry.title);
         const storedEntry = await (0, prismaService_1.storeInSQL)(entry);
         res.status(201).json(storedEntry);
     }
     catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'Failed to add KB entry', traces: error });
     }
 }
