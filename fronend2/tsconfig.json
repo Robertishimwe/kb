@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      // ...
+      "baseUrl": ".",
+      "paths": {
+        "@/*": [
+          "./src/*"
+        ]
+      }
+      // .../home/user/inventoryfe/src/layouts
+    }
+  }
+  
