@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Link } from 'react-router-dom'
 import { Layout } from '../layouts/MainLayout'
+import api from "../utils/api"
 
 interface KBEntry {
   id: string
@@ -37,13 +38,17 @@ export default function KnowledgeBaseList() {
     setError(null)
 
     try {
-      const response = await fetch(`http://localhost:3000/api/kb/search?query=${searchQuery}`)
-      if (!response.ok) {
-        throw new Error('Failed to fetch search results')
-      }
-      const data: KBEntry[] = await response.json()
+      const response = await  api.get(`/api/kb/search?query=${searchQuery}`)
+      
+      // fetch(`https://kb-3.onrender.com/api/kb/search?query=${searchQuery}`)
+      console.log(response)
+      // if (!response.ok) {
+      //   throw new Error('Failed to fetch search results')
+      // }
+      const data: KBEntry[] = []
       setFilteredEntries(data)
     } catch (err) {
+      console.log(">>>>>>>>>>>>>>>>>",err)
       setError(err.message)
     } finally {
       setLoading(false)
