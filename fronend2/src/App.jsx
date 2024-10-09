@@ -3,8 +3,6 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import ProtectedRoute from './components/protectedRoute';
 import Login from "./pages/Login";
 
-import "./App.css";
-
 import AddKBEntry from "./pages/AddKb";
 import KnowledgeBaseList from "./pages/KbList";
 

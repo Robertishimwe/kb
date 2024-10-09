@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Book, Search } from 'lucide-react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import LogoutButton from '../components/LogoutButton';
 
 export function Layout({ children }) {
   const location = useLocation()
@@ -36,9 +37,13 @@ export function Layout({ children }) {
                   }`}
                 >
                   {item}
+                  
                 </Link>
+                
               ))}
+              
             </nav>
+            
           </div>
         </div>
       </header>
@@ -69,8 +74,12 @@ export function Layout({ children }) {
       <footer className="bg-gray-100 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-center text-sm text-gray-500">
-            © 2024 KnowledgeBase. All rights reserved.
+            © 2024 KnowledgeBase - RIshimwe. All rights reserved.
           </p>
+          {/* <div className='flex'><LogoutButton/></div> */}
+          <div className="flex justify-end">
+          <LogoutButton/>
+</div>
         </div>
       </footer>
     </div>
