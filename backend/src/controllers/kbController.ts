@@ -72,9 +72,12 @@ export async function searchKB(req: Request, res: Response) {
 export async function getAllKB(req: Request, res: Response) {
   try {
 
-   res.status(200).json(await getAllKBEntries());
+    const results = await getAllKBEntries()
+    console.log(results)
+    res.status(200).json(results);
 
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to get KB', traces: error });
   }
 }
