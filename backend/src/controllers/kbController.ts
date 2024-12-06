@@ -5,7 +5,7 @@ import { KBEntry } from '../models/kbEntry';
 import splitText from '../utils/textProcessing';
 import { generateEmbeddings } from '../services/embeddingService';
 import { storeInPinecone, searchPinecone } from '../services/pineconeService';
-import { storeInSQL, getKBEntryByTitle } from '../services/prismaService';
+import { storeInSQL, getAllKBEntries, getKBEntryByTitle } from '../services/prismaService';
 
 export async function addKBEntry(req: Request, res: Response) {
 
@@ -66,5 +66,15 @@ export async function searchKB(req: Request, res: Response) {
     res.json(uniqueEntries);
   } catch (error) {
     res.status(500).json({ error: 'Failed to search KB', traces: error });
+  }
+}
+
+export async function getAllKB(req: Request, res: Response) {
+  try {
+
+   res.status(200).json(await getAllKBEntries());
+
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get KB', traces: error });
   }
 }

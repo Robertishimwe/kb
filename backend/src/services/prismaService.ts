@@ -16,3 +16,7 @@ export async function getKBEntryByTitle(title: string) {
     where: { title },
   });
 }
+
+export async function getAllKBEntries() {
+  return await prisma.kBEntry.findMany();
+}
