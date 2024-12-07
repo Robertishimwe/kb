@@ -6,6 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addKBEntry = addKBEntry;
 exports.searchKB = searchKB;
+exports.getAllKB = getAllKB;
 const textProcessing_1 = __importDefault(require("../utils/textProcessing"));
 const embeddingService_1 = require("../services/embeddingService");
 const pineconeService_1 = require("../services/pineconeService");
@@ -51,5 +52,16 @@ async function searchKB(req, res) {
     }
     catch (error) {
         res.status(500).json({ error: 'Failed to search KB', traces: error });
+    }
+}
+async function getAllKB(req, res) {
+    try {
+        const results = await (0, prismaService_1.getAllKBEntries)();
+        console.log(results);
+        res.status(200).json(results);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ error: 'Failed to get KB', traces: error });
     }
 }
