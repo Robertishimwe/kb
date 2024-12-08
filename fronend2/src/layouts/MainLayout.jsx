@@ -26,7 +26,7 @@ export function Layout({ children }) {
               <span className="ml-2 text-2xl font-bold text-gray-900">KnowledgeBase</span>
             </div>
             <nav className="hidden md:flex space-x-8">
-              {['ARTICLES', 'CATEGORIES', 'SUPPORT', 'ABOUT'].map((item) => (
+              {['ARTICLES', 'ALLARTICLES', 'SUPPORT', 'ABOUT'].map((item) => (
                 <Link
                   key={item}
                   to={`/${item.toLowerCase()}`}
@@ -74,7 +74,7 @@ export function Layout({ children }) {
       <footer className="bg-gray-100 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <p className="text-center text-sm text-gray-500">
-            © 2024 KnowledgeBase - RIshimwe. All rights reserved.
+            © 2025 KnowledgeBase - RIshimwe. All rights reserved.
           </p>
           {/* <div className='flex'><LogoutButton/></div> */}
           <div className="flex justify-end">

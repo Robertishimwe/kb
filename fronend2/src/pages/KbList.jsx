@@ -44,7 +44,7 @@ export default function KnowledgeBaseList() {
         throw new Error('Failed to fetch search results')
       }
       
-      const data = await response.data
+      const data = await response.data.results
       setFilteredEntries(data)
     } catch (err) {
       console.error("Error fetching search results:", err)
