@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 
 import AddKBEntry from "./pages/AddKb";
 import KnowledgeBaseList from "./pages/KbList";
+import AllKnowledgeBaseList from "./pages/AllKbList";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<ProtectedRoute><KnowledgeBaseList /></ProtectedRoute>} />
         <Route path="/add" element={<ProtectedRoute> <AddKBEntry /></ProtectedRoute>} />
         <Route path="/articles" element={<ProtectedRoute> <KnowledgeBaseList /> </ProtectedRoute>} />
+        <Route path="/allarticles" element={<ProtectedRoute> <AllKnowledgeBaseList/> </ProtectedRoute>}/>
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
