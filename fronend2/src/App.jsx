@@ -2,11 +2,13 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import ProtectedRoute from './components/protectedRoute';
 import Login from "./pages/Login";
+// import YouTubeAIDJ from "./pages/Audio";
 
 import "./App.css";
 
 import AddKBEntry from "./pages/AddKb";
 import KnowledgeBaseList from "./pages/KbList";
+import YouTubeAIDJ from "./pages/Audio";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <Route path="/add" element={<ProtectedRoute> <AddKBEntry /></ProtectedRoute>} />
         <Route path="/articles" element={<ProtectedRoute> <KnowledgeBaseList /> </ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/audio" element={<YouTubeAIDJ />} />
         <Route path="*" element={<Navigate to="/" />} />
+
       </Routes>
     </GoogleOAuthProvider>
   );
